@@ -31,71 +31,60 @@
 <!-- Add your site or application content here -->
 <div class="header">
   <span us-spinner spinner-key="spinner"></span>
-  <div class="navbar navbar-default">
+  <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <div class="col-lg-offset-1 col-lg-10">
-        <div class="navbar-header">
-          <a href="#/" class="navbar-brand logo">
-            <img src="/images/yeoman.png" style="height: 32px;" alt="basic" title="basic">
-            <span class="brand">basic</span>
-          </a>
-        </div>
+      <div class="row">
+        <div class="col-lg-offset-1 col-lg-10">
+          <div class="navbar-header">
+            <a href="#/" class="navbar-brand brand">
+              <img src="/images/yeoman.png" style="height: 32px;" alt="basic" title="basic">
+              Basic
+            </a>
+          </div>
 
-        <div class="collapse navbar-collapse" id="js-navbar-collapse">
-          <form class="navbar-form navbar-right" style="margin-left: 10px;" ng-if="username !== null">
-            <button class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true"
-                    aria-expanded="false">
-              <i class="glyphicon glyphicon-user"></i>
-              {{username}} <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="" ng-click="logout()">登出</a></li>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="#/dashboard">
+                  <span class="glyphicon glyphicon-picture"></span>
+                  <span>仪表盘</span>
+                </a>
+              </li>
+              <li>
+                <a href="#/dataModel">
+                  <span class="glyphicon glyphicon-list"></span>
+                  <span>数据表</span>
+                </a>
+              </li>
+              <li>
+                <a href="#/setting">
+                  <span class="glyphicon glyphicon-cog"></span>
+                  <span>设置</span>
+                </a>
+              </li>
             </ul>
-          </form>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a ng-class="{true:'active'}[tab === 'dashboard']" href="#/dashboard">
-                <span class="glyphicon glyphicon-picture"></span>
-                <span>仪表盘</span>
-              </a>
-            </li>
-            <li>
-              <a ng-class="{true:'active'}[tab === 'dataModel']" href="#/dataModel">
-                <span class="glyphicon glyphicon-list"></span>
-                <span>数据表</span>
-              </a>
-            </li>
-            <li>
-              <a ng-class="{true:'active'}[tab === 'setting']" href="#/setting">
-                <span class="glyphicon glyphicon-cog"></span>
-                <span>设置</span>
-              </a>
-            </li>
-          </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </nav>
 </div>
 
 <div class="container-fluid">
-  <!--<div class="col-xs-7 col-sm-3 col-md-2 sidebar sidebar-left sidebar-animate">-->
-  <!--<ul class="nav navbar-stacked">-->
-  <!--<li><a href="#/job_management">{{'job_manage' | translate}}</a></li>-->
-  <!--<li><a href="#/label_management">{{'label_manage' | translate}}</a></li>-->
-  <!--<li><a ng-href="#/system_management">{{'system_manage' | translate}}</a></li>-->
-  <!--<li><a ng-href="#/">{{'user_manage' | translate}}</a></li>-->
-  <!--</ul>-->
-  <!--</div>-->
-  <div class="col-lg-10 col-lg-offset-1">
-    <ui-view></ui-view>
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1 wrap">
+      <ui-view></ui-view>
+    </div>
   </div>
-</div>
-
-<div class="container-fluid">
-  <div class="col-lg-10 col-lg-offset-1">
-    <div class="footer">
-      © Copyright
+  <div class="row">
+    <div class="footer col-lg-12">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-1 footer-container">
+            © Copyright
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -20,6 +20,7 @@ let paths = {
   buildScripts : [yeoman.app + '/build-scripts/**/*.js'],
   serverScripts: ['server/**/*.js'],
   styles: [yeoman.app + '/sass/**/*.scss'],
+  mainStyles: [yeoman.app + '/sass/main.scss'],
   test: ['test/spec/**/*.js'],
   testRequire: [
     yeoman.app + '/bower_components/angular/angular.js',
@@ -71,7 +72,7 @@ let es6ServerScript = lazypipe()
 ///////////
 
 gulp.task('styles', function () {
-  return gulp.src(paths.styles)
+  return gulp.src(paths.mainStyles)
     .pipe(styles());
 });
 
@@ -105,6 +106,7 @@ gulp.task('start:server', ['styles', 'es6:frontend', 'es6:server', 'bower'], fun
 gulp.task('watch', function () {
   $.livereload.listen();
   $.watch(paths.styles)
+    .src(paths.mainStyles)
     .pipe($.plumber())
     .pipe(styles())
     .pipe($.livereload());
