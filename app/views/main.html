@@ -8,9 +8,9 @@
     <div class="col-lg-8 col-centered">
       <div id="custom-search-input">
         <div class="input-group">
-          <input type="text" class="form-control input-lg" placeholder="Buscar"/>
+          <input type="text" class="form-control input-lg" ng-model="content" ng-model-options="{updateOn: 'default blur'}"/>
           <span class="input-group-btn">
-            <button class="btn btn-info btn-lg" type="button">
+            <button class="btn btn-info btn-lg" type="button" ng-click="search()">
               <i class="glyphicon glyphicon-search"></i>
             </button>
           </span>

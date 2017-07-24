@@ -105,11 +105,12 @@ gulp.task('start:server', ['styles', 'es6:frontend', 'es6:server', 'bower'], fun
 
 gulp.task('watch', function () {
   $.livereload.listen();
-  $.watch(paths.styles)
-    .src(paths.mainStyles)
-    .pipe($.plumber())
-    .pipe(styles())
-    .pipe($.livereload());
+  $.watch(paths.styles, function(){
+    return gulp.src(paths.mainStyles)
+      .pipe($.plumber())
+      .pipe(styles())
+      .pipe($.livereload());
+  });
 
   $.watch(paths.views.files)
     .pipe($.plumber())

@@ -46,4 +46,6 @@ angular
         templateUrl: 'views/search.html',
         controller: 'SearchCtrl'
       });
+  }).constant('GLOBAL', {
+    host: './proxy/ocsearch-service',
   });

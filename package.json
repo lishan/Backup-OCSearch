@@ -32,6 +32,7 @@
     "gulp-war": "^0.1.4",
     "gulp-watch": "^4.2.4",
     "gulp-zip": "^4.0.0",
+    "http-proxy-middleware": "^0.17.4",
     "jshint-stylish": "^1.0.0",
     "lazypipe": "^0.2.4",
     "rimraf": "^2.4.0",
