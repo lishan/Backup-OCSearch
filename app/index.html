@@ -1,0 +1,146 @@
+<!doctype html>
+<html ng-app="basic">
+<head>
+  <meta charset="utf-8">
+  <title>Basic</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap-sidebar/dist/css/sidebar.css" />
+  <link rel="stylesheet" href="bower_components/isteven-angular-multiselect/isteven-multi-select.css" />
+  <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.css" />
+  <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+  <link rel="stylesheet" href="bower_components/angular-toggle-switch/angular-toggle-switch.css" />
+  <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+  <link rel="stylesheet" href="bower_components/angular-hotkeys/build/hotkeys.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(app) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+</head>
+<body ng-app="basic">
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div class="header">
+  <span us-spinner spinner-key="spinner"></span>
+  <div class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="col-lg-offset-1 col-lg-10">
+        <div class="navbar-header">
+          <a href="#/" class="navbar-brand logo">
+            <img src="/images/yeoman.png" style="height: 32px;" alt="basic" title="basic">
+            <span class="brand">basic</span>
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="js-navbar-collapse">
+          <form class="navbar-form navbar-right" style="margin-left: 10px;" ng-if="username !== null">
+            <button class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">
+              <i class="glyphicon glyphicon-user"></i>
+              {{username}} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="" ng-click="logout()">登出</a></li>
+            </ul>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a ng-class="{true:'active'}[tab === 'dashboard']" href="#/dashboard">
+                <span class="glyphicon glyphicon-picture"></span>
+                <span>仪表盘</span>
+              </a>
+            </li>
+            <li>
+              <a ng-class="{true:'active'}[tab === 'dataModel']" href="#/dataModel">
+                <span class="glyphicon glyphicon-list"></span>
+                <span>数据表</span>
+              </a>
+            </li>
+            <li>
+              <a ng-class="{true:'active'}[tab === 'setting']" href="#/setting">
+                <span class="glyphicon glyphicon-cog"></span>
+                <span>设置</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <!--<div class="col-xs-7 col-sm-3 col-md-2 sidebar sidebar-left sidebar-animate">-->
+  <!--<ul class="nav navbar-stacked">-->
+  <!--<li><a href="#/job_management">{{'job_manage' | translate}}</a></li>-->
+  <!--<li><a href="#/label_management">{{'label_manage' | translate}}</a></li>-->
+  <!--<li><a ng-href="#/system_management">{{'system_manage' | translate}}</a></li>-->
+  <!--<li><a ng-href="#/">{{'user_manage' | translate}}</a></li>-->
+  <!--</ul>-->
+  <!--</div>-->
+  <div class="col-lg-10 col-lg-offset-1">
+    <ui-view></ui-view>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="col-lg-10 col-lg-offset-1">
+    <div class="footer">
+      © Copyright
+    </div>
+  </div>
+</div>
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/jquery-ui/jquery-ui.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/bootstrap-sidebar/dist/js/sidebar.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+<script src="bower_components/isteven-angular-multiselect/isteven-multi-select.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-ui-notification/dist/angular-ui-notification.js"></script>
+<script src="bower_components/spin.js/spin.js"></script>
+<script src="bower_components/angular-spinner/angular-spinner.js"></script>
+<script src="bower_components/angular-ui-select/dist/select.js"></script>
+<script src="bower_components/angular-toggle-switch/angular-toggle-switch.js"></script>
+<script src="bower_components/angular-hotkeys/build/hotkeys.js"></script>
+<script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/angular-moment/angular-moment.js"></script>
+<script src="bower_components/chart.js/dist/Chart.js"></script>
+<script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js(app) scripts/scripts.js -->
+<!-- 3rd party packages should lay before scripts in projects-->
+<script src="bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
+<script src="build-scripts/app.js"></script>
+<script src="build-scripts/controllers/main.js"></script>
+<script src="build-scripts/controllers/dashboard.js"></script>
+<script src="build-scripts/controllers/dataModel.js"></script>
+<script src="build-scripts/controllers/setting.js"></script>
+<!-- endbuild -->
+</body>
+</html>

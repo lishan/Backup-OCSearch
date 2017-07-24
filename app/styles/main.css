@@ -1,0 +1,268 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding: 0;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  margin-bottom: 10px;
+  /* Make the masthead heading the same height as the navigation */
+}
+
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+/* Custom css*/
+.sidebar {
+  background-color: #f5f5f5;
+  border-top: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+  padding: 20px;
+}
+
+.panel {
+  margin-top: 10px;
+}
+
+.navbar-default {
+  height: 40px;
+  margin-bottom: 0px;
+  border-top-width: 0px;
+}
+
+.navbar-default .navbar-header .brand {
+  font-size: 16px;
+  text-shadow: 0 1px 0 #555555;
+}
+
+.navbar-default .navbar-nav > li > a {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  background-color: #eeeeee;
+}
+
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a.active:hover,
+.navbar-default .navbar-nav > li > a.active {
+  color: #FFFFFF;
+  background-color: #999999;
+}
+
+/* 3rd party css*/
+/**
+ * For the correct positioning of the placeholder element, the dnd-list and
+ * it's children must have position: relative
+ */
+ul[dnd-list],
+ul[dnd-list] > li {
+  position: relative;
+}
+
+/**
+ * The dnd-list should always have a min-height,
+ * otherwise you can't drop to it once it's empty
+ */
+ul[dnd-list] {
+  min-height: 42px;
+  padding-left: 0px;
+}
+
+/**
+ * The dndDraggingSource class will be applied to
+ * the source element of a drag operation. It makes
+ * sense to hide it to give the user the feeling
+ * that he's actually moving it.
+ */
+ul[dnd-list] .dndDraggingSource {
+  display: none;
+}
+
+/**
+ * An element with .dndPlaceholder class will be
+ * added to the dnd-list while the user is dragging
+ * over it.
+ */
+ul[dnd-list] .dndPlaceholder {
+  display: block;
+  background-color: #ddd;
+  min-height: 42px;
+}
+
+/**
+ * The dnd-lists's child elements currently MUST have
+ * position: relative. Otherwise we can not determine
+ * whether the mouse pointer is in the upper or lower
+ * half of the element we are dragging over. In other
+ * browsers we can use event.offsetY for this.
+ */
+ul[dnd-list] li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+}
+
+/**
+ * Show selected elements in green
+ */
+ul[dnd-list] li.selected {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+
+.wizard-card-container {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.handle {
+  cursor: move;
+}
+
+.flash {
+  -webkit-animation-name: flash;
+  animation-name: flash;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+}
+
+a.choose,
+a.choose:hover,
+a.list-group-item:focus,
+ul#actions > li > a:hover,
+ul#quick > li > a:hover {
+  background-color: #999999;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+i.danger {
+  color: red;
+}
+
+i.success {
+  color: green;
+}
+
+i.warning {
+  color: orange;
+}
+
+ul#actions > li.disabled > a:hover {
+  background-color: #999999;
+  color: #777777;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+g div {
+  color: black;
+  font-size: 14px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+a:hover, a:focus {
+  text-decoration: none;
+}
+
+input.ng-invalid.ng-touched,
+div.ng-invalid.ng-touched div.tokenfield,
+div.ng-invalid.ng-touched.ui-select-container span.ui-select-toggle {
+  border: 1px solid red;
+}
+
+#mainFrame input.ng-invalid.ng-touched + span.input-group-btn button {
+  border: 1px solid red;
+  color: red;
+}
+
+span.redtip,
+div.ng-invalid.ng-touched.ui-select-container i.caret.pull-right {
+  color: red;
+}
+
+.popover-content {
+  width: 200px;
+}
+
+.navbar-brand.logo {
+  padding: 10px 15px;
+}
+
+ul.ui-autocomplete {
+  width: 112px !important;
+  z-index: 1100 !important;
+}
+
+table a {
+  cursor: pointer;
+}
+
+.panel.panel-default {
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
