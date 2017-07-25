@@ -3,11 +3,8 @@
 /**
  * Main Controller
  */
-angular.module('basic').controller('MainCtrl', ['$scope', '$http', 'GLOBAL', function ($scope, $http, GLOBAL) {
+angular.module('basic').controller('MainCtrl', ['$scope', 'searchService', function ($scope, searchService) {
   $scope.search = function(){
-    console.log($scope.content);
-    $http.get(GLOBAL.host + "/table/list").then(function(data){
-      console.log(data);
-    });
+    searchService.search($scope.content);
   }
 }]);

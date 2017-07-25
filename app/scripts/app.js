@@ -41,11 +41,12 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .state('search', {
-        url:"/search",
-        templateUrl: 'views/search.html',
-        controller: 'SearchCtrl'
+      .state('result', {
+        url:"/result",
+        params: {"tables": null, content: null},
+        templateUrl: 'views/result.html',
+        controller: 'ResultCtrl'
       });
   }).constant('GLOBAL', {
-    host: './proxy/ocsearch-service',
+    host: './ocsearch-service',
   });

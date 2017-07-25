@@ -1,0 +1,30 @@
+<div class="header">
+  <nav class="navbar navbar-default" style="min-height: 120px;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-1">
+          <a href="#/" class="navbar-brand brand" style="padding-left: 45%;">
+            <img src="/images/yeoman.png" style="height: 50px;" alt="basic" title="basic">
+          </a>
+        </div>
+        <div class="col-lg-5">
+          <div id="custom-search-input" style="margin-top: 15px;">
+            <div class="input-group">
+              <input type="text" class="form-control" ng-model="content" ng-model-options="{updateOn: 'default blur'}"/>
+              <span class="input-group-btn">
+                  <button class="btn btn-info" type="button" ng-click="search()">
+                    <i class="glyphicon glyphicon-search"></i>
+                  </button>
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 15px;">
+        <div class="col-lg-10 col-lg-offset-1">
+          <button ng-repeat="item in tables" style="margin-right: 5px;" class="btn btn-default">{{item}}</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>

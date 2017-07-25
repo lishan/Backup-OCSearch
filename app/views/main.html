@@ -1,21 +1,67 @@
-<div class="container-fluid" style="padding-top: 15%">
-  <div class="row">
-    <div class="col-lg-2 col-centered">
-      <img src="images/yeoman.png" alt="I'm Yeoman"><br>
+<div class="header">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-offset-1 col-lg-10">
+          <div class="navbar-header">
+            <a href="#/" class="navbar-brand brand">
+              <img src="/images/yeoman.png" style="height: 32px;" alt="basic" title="basic">
+              OCSearch
+            </a>
+          </div>
+
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="#/schema">
+                  <span class="glyphicon glyphicon-book"></span>
+                  <span>Schema</span>
+                </a>
+              </li>
+              <li>
+                <a href="#/table">
+                  <span class="glyphicon glyphicon-list"></span>
+                  <span>Table</span>
+                </a>
+              </li>
+              <li>
+                <a href="#/setting">
+                  <span class="glyphicon glyphicon-cog"></span>
+                  <span>Setting</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row" style="padding-top: 3%">
-    <div class="col-lg-8 col-centered">
-      <div id="custom-search-input">
-        <div class="input-group">
-          <input type="text" class="form-control input-lg" ng-model="content" ng-model-options="{updateOn: 'default blur'}"/>
-          <span class="input-group-btn">
-            <button class="btn btn-info btn-lg" type="button" ng-click="search()">
-              <i class="glyphicon glyphicon-search"></i>
-            </button>
-          </span>
+  </nav>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1 wrap">
+      <div class="container-fluid" style="padding-top: 15%">
+        <div class="row">
+          <div class="col-lg-2 col-centered">
+            <img src="images/yeoman.png" alt="I'm Yeoman"><br>
+          </div>
+        </div>
+        <div class="row" style="padding-top: 3%">
+          <div class="col-lg-8 col-centered">
+            <div id="custom-search-input">
+              <div class="input-group">
+                <input type="text" class="form-control input-lg" ng-model="content" ng-model-options="{updateOn: 'default blur'}"/>
+                <span class="input-group-btn">
+                  <button class="btn btn-info btn-lg" type="button" ng-click="search()">
+                    <i class="glyphicon glyphicon-search"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+

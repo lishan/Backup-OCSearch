@@ -29,53 +29,9 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<div class="header">
-  <span us-spinner spinner-key="spinner"></span>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-offset-1 col-lg-10">
-          <div class="navbar-header">
-            <a href="#/" class="navbar-brand brand">
-              <img src="/images/yeoman.png" style="height: 32px;" alt="basic" title="basic">
-              Basic
-            </a>
-          </div>
-
-          <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <a href="#/dashboard">
-                  <span class="glyphicon glyphicon-picture"></span>
-                  <span>仪表盘</span>
-                </a>
-              </li>
-              <li>
-                <a href="#/dataModel">
-                  <span class="glyphicon glyphicon-list"></span>
-                  <span>数据表</span>
-                </a>
-              </li>
-              <li>
-                <a href="#/setting">
-                  <span class="glyphicon glyphicon-cog"></span>
-                  <span>设置</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-</div>
-
+<span us-spinner spinner-key="spinner"></span>
+<ui-view></ui-view>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-10 col-lg-offset-1 wrap">
-      <ui-view></ui-view>
-    </div>
-  </div>
   <div class="row">
     <div class="footer col-lg-12">
       <div class="container-fluid">
@@ -127,9 +83,8 @@
 <script src="bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
 <script src="build-scripts/app.js"></script>
 <script src="build-scripts/controllers/main.js"></script>
-<script src="build-scripts/controllers/dashboard.js"></script>
-<script src="build-scripts/controllers/dataModel.js"></script>
-<script src="build-scripts/controllers/setting.js"></script>
+<script src="build-scripts/controllers/result.js"></script>
+<script src="build-scripts/services/searchService.js"></script>
 <!-- endbuild -->
 </body>
 </html>
