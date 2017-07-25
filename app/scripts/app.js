@@ -33,7 +33,7 @@ angular
     'angularMoment',
     'chart.js'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     $urlRouterProvider.otherwise("home");
     $stateProvider
       .state('home', {
@@ -43,10 +43,11 @@ angular
       })
       .state('result', {
         url:"/result",
-        params: {"tables": null, content: null},
+        params: {"schemas": null, content: null},
         templateUrl: 'views/result.html',
         controller: 'ResultCtrl'
       });
+    $httpProvider.interceptors.push('spinnerInterceptor');
   }).constant('GLOBAL', {
     host: './ocsearch-service',
   });

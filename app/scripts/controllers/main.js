@@ -3,8 +3,17 @@
 /**
  * Main Controller
  */
-angular.module('basic').controller('MainCtrl', ['$scope', 'searchService', function ($scope, searchService) {
+angular.module('basic').controller('MainCtrl', ['$scope', 'searchService', 'hotkeys', '$state', function ($scope, searchService, hotkeys, $state) {
   $scope.search = function(){
-    searchService.search($scope.content);
-  }
+    searchService.search($scope.content, function(schemas){
+      $state.go("result", {"schemas": schemas, "content": $scope.content});
+    });
+  };
+
+  hotkeys.bindTo($scope)
+    .add({
+      combo: 'enter',
+      allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+      callback: $scope.search
+    });
 }]);

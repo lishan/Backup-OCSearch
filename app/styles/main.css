@@ -37,29 +37,13 @@
   padding: 0.2em 0;
 }
 
-.header .brand {
+.brand {
   padding-top: 10px;
 }
 
 .col-centered {
   float: none;
   margin: 0 auto;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  position: relative;
-}
-
-body::after {
-  content: '';
-  display: block;
-  height: 50px;
-  /* Set same as footer's height */
 }
 
 .footer {

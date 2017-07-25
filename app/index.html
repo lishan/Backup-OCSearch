@@ -29,9 +29,9 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<span us-spinner spinner-key="spinner"></span>
+<span us-spinner="{color: 'orange',radius:30, width:8, length: 16}" spinner-key="spinner"></span>
 <ui-view></ui-view>
-<div class="container-fluid">
+<div class="container-fluid navbar-fixed-bottom">
   <div class="row">
     <div class="footer col-lg-12">
       <div class="container-fluid">
@@ -84,7 +84,8 @@
 <script src="build-scripts/app.js"></script>
 <script src="build-scripts/controllers/main.js"></script>
 <script src="build-scripts/controllers/result.js"></script>
-<script src="build-scripts/services/searchService.js"></script>
+<script src="build-scripts/services/search.js"></script>
+<script src="build-scripts/interceptor/spinner.js"></script>
 <!-- endbuild -->
 </body>
 </html>
