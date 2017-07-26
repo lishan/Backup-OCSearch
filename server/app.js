@@ -16,7 +16,7 @@ if(env === 'dev') {
   app.use("/fonts",express.static("app/bower_components/bootstrap/fonts"));
 }
 
-app.use('/ocsearch-service', proxy({target: 'http://10.1.236.66:28080', changeOrigin: true}));
+app.use('/ocsearch-service', proxy({target: 'http://10.1.236.66:28080', changeOrigin: true, "secure": false}));
 
 app.use(express.static(config[env].dist));
 app.use(favicon(path.join(__dirname, '../', config[env].dist, '/favicon.ico')));

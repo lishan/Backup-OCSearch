@@ -1,8 +1,8 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<div class="navbar-default" style="border-bottom: solid 1px #e7e7e7;">
   <div class="container-fluid">
-    <div class="row">
+    <div class="row" style="margin-bottom: 10px;">
       <div class="col-lg-1">
-        <a href="#/" class="navbar-brand brand" style="padding-left: 45%;">
+        <a href="#/" class="navbar-brand brand" style="padding-left: 33%;">
           <img src="/images/yeoman.png" style="height: 50px;" alt="basic" title="basic">
         </a>
       </div>
@@ -11,53 +11,83 @@
           <div class="input-group">
             <input type="text" class="form-control" ng-model="content" ng-model-options="{updateOn: 'default blur'}"/>
             <span class="input-group-btn">
-                  <button class="btn btn-info" type="button" ng-click="search()">
-                    <i class="glyphicon glyphicon-search"></i>
-                  </button>
-                </span>
+              <button class="btn btn-info" type="button" ng-click="search()">
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1" ng-init="page.condition=false">
+        <button class="btn btn-default" type="button" style="margin-top: 15px;padding: 9px 11px 9px 11px;outline: 0"
+                ng-click="page.condition=!page.condition"
+                ng-class="{active: page.condition}" auto-blur-btn="page.condition">
+          <i class="glyphicon glyphicon-list"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;" ng-if="page.condition">
+      <div class="col-lg-5 col-lg-offset-1">
+        <div class="form-horizontal">
+          <div class="form-group">
+            <div class="col-lg-12">
+              <label>Conditions</label>
+              <input type="text" ng-model="condition" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-4">
+              <label>Rows</label>
+              <select class="form-control" ng-model="page.rows" ng-options="o for o in page.rowOptions"></select>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row" style="margin-top: 15px;">
+    <div class="row" ng-if="schemas !== null">
       <div class="col-lg-10 col-lg-offset-1">
-        <button style="margin-right: 5px;" class="btn btn-default" ng-repeat="item in schemas"
-                ng-click="chooseSchema(item)">
-          <i class="glyphicon glyphicon-book"></i>
-          {{item.name}}
-        </button>
-      </div>
-    </div>
-    <div class="row" style="margin-top: 15px; margin-bottom: 10px;">
-      <div class="col-lg-10 col-lg-offset-1">
-        <button ng-repeat="table in schema.tables" style="margin-right: 5px;" class="btn btn-default"
-                ng-click="choose(table)">
-          <i class="glyphicon glyphicon-list"></i>
-          {{table}}
-        </button>
+        <ul class="nav nav-tabs">
+          <li role="presentation" ng-repeat="item in schemas" ng-class="{active: $index == page.chooseIndex}">
+            <a href="" ng-click="chooseSchema(item, $index)">
+              <i class="glyphicon glyphicon-book"></i>
+              {{item.name}}
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-</nav>
+</div>
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
       <div class="container-fluid">
+        <div class="row" style="margin-top: 10px;">
+          <button ng-repeat="table in page.schema.tables" style="margin-right: 5px; outline: 0" class="btn btn-default"
+                  ng-click="choose(table)" ng-class="{active: page.actives[$index]}" auto-blur-btn="page.actives[$index]">
+            <i class="glyphicon glyphicon-list"></i>
+            {{table}}
+          </button>
+        </div>
         <div class="row" ng-repeat="item in data.docs" style="margin-top: 10px;">
-          <span class="badge">{{$index}}</span>
-          <div ng-repeat="field in schema.fields">
+          <span class="badge">{{$index+1}}</span>
+          <div ng-repeat="field in page.schema.fields">
             <h3 ng-if="field.name === 'name'">
               {{item[field.name]}}
             </h3>
             <span ng-if="field.name !=='name'">
               <strong>{{field.name}}</strong>
-              &nbsp;&nbsp;
-              <a href="" ng-if="field.store_type !== 'STRING'">{{item[field.name]}}</a>
+              <a href="{{host}}/query/fileget?id={{item[field.name]}}" ng-if="field.store_type !== 'STRING'">{{item[field.name]}}</a>
               <span ng-if="field.store_type === 'STRING'">{{item[field.name]}}</span>
             </span>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row" ng-if="data.docs">
+    <div class="col-lg-10 col-lg-offset-1">
+      <ul uib-pagination items-per-page="page.rows" ng-change="pageChanged()" total-items="page.pagination.total" ng-model="page.pagination.current" previous-text="&lsaquo;" next-text="&rsaquo;"></ul>
     </div>
   </div>
 </div>
