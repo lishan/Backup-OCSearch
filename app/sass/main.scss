@@ -29,3 +29,15 @@
 body{
   padding-bottom: 50px;
 }
+
+.box{
+  -webkit-box-shadow: 4px 4px 8px #d5d5d5;
+  -moz-box-shadow: 4px 4px 8px #d5d5d5;
+  box-shadow: 4px 4px 8px #d5d5d5;
+}
+
+.box:hover{
+  -webkit-box-shadow: 5px 5px 8px #d5d5d5;
+  -moz-box-shadow: 5px 5px 8px #d5d5d5;
+  box-shadow: 5px 5px 8px #d5d5d5;
+}

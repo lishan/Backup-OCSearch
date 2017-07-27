@@ -43,10 +43,10 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-1">
-        <button class="btn btn-default" type="button" style="margin-top: 15px;padding: 9px 11px 9px 11px;outline: 0"
+      <div class="col-lg-1 pull-right">
+        <button class="btn btn-default" type="button" style="margin-top: 15px;padding: 9px 13px 9px 13px;outline: 0"
                 data-toggle="collapse" data-target=".nav-collapse">
-          <i class="glyphicon glyphicon-list"></i>
+          <i class="glyphicon glyphicon-cog"></i>
         </button>
       </div>
     </div>
@@ -83,7 +83,7 @@
             </h3>
             <span ng-if="field.name !=='name'">
               <strong>{{field.name}}</strong>
-              <a href="{{host}}/query/fileget?id={{item[field.name]}}" ng-if="field.store_type !== 'STRING'">{{item[field.name]}}</a>
+              <a href="{{host}}/query/fileget?id={{item[field.name]}}" ng-if="field.store_type !== 'STRING'">link</a>
               <span ng-if="field.store_type === 'STRING'">{{item[field.name]}}</span>
             </span>
           </div>

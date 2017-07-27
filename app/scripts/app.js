@@ -41,6 +41,16 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .state('schema', {
+        url:"/schema",
+        templateUrl: 'views/schema.html',
+        controller: 'SchemaCtrl'
+      })
+      .state('table', {
+        url:"/table",
+        templateUrl: 'views/table.html',
+        controller: 'TableCtrl'
+      })
       .state('result', {
         url:"/result",
         params: {"schemas": null, content: null},
