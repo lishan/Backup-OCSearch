@@ -91,6 +91,10 @@ angular.module('basic').controller('ResultCtrl', ['$scope', 'searchService', '$s
     $scope._choose();
   };
 
+  $scope.toggleSideBar = function(){
+    $scope.$broadcast('openSidebar');
+  };
+
   /**
    * Global init functions
    */

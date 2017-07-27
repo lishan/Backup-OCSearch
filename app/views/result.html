@@ -1,8 +1,33 @@
+<div class="nav-collapse collapse navbar-default" style="position: absolute;background-color: #e7e7e7;z-index: 100;width: 100%">
+  <div class="container-fluid">
+    <div class="col-lg-5 col-lg-offset-1" style="margin-top: 10px;">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Conditions</label>
+          <div class="col-lg-10">
+            <input type="text" ng-model="condition" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Rows</label>
+          <div class="col-lg-4">
+            <select class="form-control" ng-model="page.rows" ng-options="o for o in page.rowOptions"></select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-4 col-lg-offset-2">
+            <button class="btn btn-default" data-toggle="collapse" data-target=".nav-collapse">Close</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <div class="navbar-default" style="border-bottom: solid 1px #e7e7e7;">
   <div class="container-fluid">
     <div class="row" style="margin-bottom: 10px;">
-      <div class="col-lg-1">
-        <a href="#/" class="navbar-brand brand" style="padding-left: 33%;">
+      <div class="col-lg-1" style="margin-top: 10px;">
+        <a href="#/" class="navbar-brand brand col-centered">
           <img src="/images/yeoman.png" style="height: 50px;" alt="basic" title="basic">
         </a>
       </div>
@@ -18,30 +43,11 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-1" ng-init="page.condition=false">
+      <div class="col-lg-1">
         <button class="btn btn-default" type="button" style="margin-top: 15px;padding: 9px 11px 9px 11px;outline: 0"
-                ng-click="page.condition=!page.condition"
-                ng-class="{active: page.condition}" auto-blur-btn="page.condition">
+                data-toggle="collapse" data-target=".nav-collapse">
           <i class="glyphicon glyphicon-list"></i>
         </button>
-      </div>
-    </div>
-    <div class="row" style="margin-bottom: 10px;" ng-if="page.condition">
-      <div class="col-lg-5 col-lg-offset-1">
-        <div class="form-horizontal">
-          <div class="form-group">
-            <div class="col-lg-12">
-              <label>Conditions</label>
-              <input type="text" ng-model="condition" class="form-control">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-lg-4">
-              <label>Rows</label>
-              <select class="form-control" ng-model="page.rows" ng-options="o for o in page.rowOptions"></select>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <div class="row" ng-if="schemas !== null">
@@ -85,7 +91,7 @@
       </div>
     </div>
   </div>
-  <div class="row" ng-if="data.docs">
+  <div class="row" ng-if="data.docs && page.pagination.total > 0">
     <div class="col-lg-10 col-lg-offset-1">
       <ul uib-pagination items-per-page="page.rows" ng-change="pageChanged()" total-items="page.pagination.total" ng-model="page.pagination.current" previous-text="&lsaquo;" next-text="&rsaquo;"></ul>
     </div>
