@@ -23,14 +23,13 @@ angular.module('basic').controller('TableCtrl', ['$scope', '$http', 'GLOBAL', '$
       backdrop: 'static',
       scope: $scope,
       size: 'md',
-      controller: ['$scope', '$http', function($scope, $http) {
+      controller: ['$scope', '$http', '$ngConfirm', function($scope, $http, $ngConfirm) {
         $scope.name = 'top';
         $scope.item = {
           hbase:{},
           solr:{}
         };
-        $scope.ok = function(){
-          console.log($scope.item);
+        $scope._ok = function(){
           if($scope.item.schemaModel) {
             $scope.item.schema = $scope.item.schemaModel.name;
           }
@@ -40,6 +39,24 @@ angular.module('basic').controller('TableCtrl', ['$scope', '$http', 'GLOBAL', '$
               solr:{}
             };
             modalInstance.close();
+          });
+        };
+        $scope.ok = function(){
+          $ngConfirm({
+            title: 'Confirmation',
+            Content: 'Are you sure?',
+            scope: $scope,
+            buttons: {
+              Yes:{
+                text: 'Yes',
+                action: function(scope){
+                  scope._ok();
+                }
+              },
+              No:{
+                text: "No"
+              }
+            }
           });
         };
         $scope.cancel = function(){

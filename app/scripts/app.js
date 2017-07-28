@@ -31,9 +31,10 @@ angular
     'cfp.hotkeys',
     'ui.bootstrap.datetimepicker',
     'angularMoment',
-    'chart.js'
+    'chart.js',
+    'cp.ngConfirm'
   ])
-  .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider, NotificationProvider) {
     $urlRouterProvider.otherwise("home");
     $stateProvider
       .state('home', {
@@ -58,6 +59,15 @@ angular
         controller: 'ResultCtrl'
       });
     $httpProvider.interceptors.push('spinnerInterceptor');
+    NotificationProvider.setOptions({
+      delay: 10000,
+      startTop: 20,
+      startRight: 10,
+      verticalSpacing: 20,
+      horizontalSpacing: 20,
+      positionX: 'right',
+      positionY: 'bottom'
+    });
   }).constant('GLOBAL', {
     host: './ocsearch-service',
   }).run(['$rootScope', function ($rootScope) {
