@@ -1,23 +1,76 @@
 <div ng-include="'views/ui/header.html'"></div>
+<script type="text/ng-template" id="addTable.html">
+  <div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Add New Table</h3>
+  </div>
+  <div class="modal-body" id="modal-body">
+    <div class="container-fluid">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label class="control-label col-md-2">Name:</label>
+        <div class="col-md-10">
+          <input class="form-control" ng-model="item.name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-2">Region Num:</label>
+        <div class="col-md-10">
+          <input class="form-control" type="number" ng-model="item.hbase.region_num">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-2">Region Split:</label>
+        <div class="col-md-10">
+          <input class="form-control" type="number" ng-model="item.hbase.region_split">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-2">Shards:</label>
+        <div class="col-md-10">
+          <input class="form-control" type="number" ng-model="item.solr.shards">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-2">Replicas:</label>
+        <div class="col-md-10">
+          <input class="form-control" type="number" ng-model="item.solr.replicas">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-2">Schema:</label>
+        <div class="col-md-4">
+          <select class="form-control" ng-model="item.schemaModel" ng-options="schema.name for schema in schemas"></select>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</script>
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-2 col-lg-offset-1">
-      <ul class="list-group box">
-        <li class="list-group-item">
-          <button class="btn btn-default btn-block">Add</button>
-        </li>
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Morbi leo risus</li>
-        <li class="list-group-item">Porta ac consectetur ac</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-      </ul>
+      <div class="list-group box">
+        <div class="list-group-item">
+          <button class="btn btn-default btn-block" style="outline: 0" ng-click="addTable()">Add</button>
+        </div>
+        <a href="" class="list-group-item" ng-repeat="table in tables" ng-click="selectTable(table, $index)" ng-class="{active: page.tablesActive[$index]}">
+          {{table}}
+        </a>
+      </div>
     </div>
     <div class="col-lg-8">
       <div class="panel panel-default box">
-        <div class="panel-heading">This</div>
+        <div class="panel-heading">
+          <div class="container-fluid">
+            <button class="btn btn-danger btn-sm pull-right">✘</button>
+          </div>
+        </div>
         <div class="panel-body">
-          That
+          {{page.table}}
         </div>
       </div>
     </div>

@@ -10,14 +10,14 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="#/schema">
+            <li ng-class="{active: global.tab === 'schema'}">
+              <a href="#/schema" ng-click="functions.click('schema')">
                 <span class="glyphicon glyphicon-book"></span>
                 <span>Schema</span>
               </a>
             </li>
-            <li>
-              <a href="#/table">
+            <li ng-class="{active: global.tab === 'table'}">
+              <a href="#/table" ng-click="functions.click('table')">
                 <span class="glyphicon glyphicon-list"></span>
                 <span>Table</span>
               </a>

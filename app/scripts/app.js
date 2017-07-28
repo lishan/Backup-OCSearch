@@ -60,4 +60,12 @@ angular
     $httpProvider.interceptors.push('spinnerInterceptor');
   }).constant('GLOBAL', {
     host: './ocsearch-service',
-  });
+  }).run(['$rootScope', function ($rootScope) {
+    $rootScope.global = {
+      tab: null
+    };
+    $rootScope.functions = {};
+    $rootScope.functions.click = function(item){
+      $rootScope.global.tab = item;
+    }
+  }]);
