@@ -75,5 +75,5 @@ angular.module('basic').controller('TableCtrl', ['$scope', '$http', 'GLOBAL', '$
       }
     }
     $scope.schemas = data[1].data.schemas;
-  })
+  });
 }]);

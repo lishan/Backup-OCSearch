@@ -3,7 +3,7 @@
 
 let gulp = require('gulp');
 let $ = require('gulp-load-plugins')();
-let openURL = require("open");
+//let openURL = require("open");
 let lazypipe = require('lazypipe');
 let rimraf = require('rimraf');
 let wiredep = require('wiredep').stream;
@@ -87,7 +87,7 @@ gulp.task('lint:serverScripts', function () {
 });
 
 gulp.task('start:client', ['start:server'], function () {
-  openURL("http://localhost:9000","chrome");
+  //openURL("http://localhost:9000","chrome");
 });
 
 gulp.task('start:server', ['styles', 'es6:frontend', 'es6:server', 'bower'], function(cb) {

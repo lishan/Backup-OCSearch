@@ -77,5 +77,5 @@ angular
     $rootScope.functions = {};
     $rootScope.functions.click = function(item){
       $rootScope.global.tab = item;
-    }
+    };
   }]);
