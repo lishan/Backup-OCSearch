@@ -1,14 +1,13 @@
 <div ng-include="'views/ui/header.html'"></div>
 <script type="text/ng-template" id="addSchema.html">
-  <div class="modal-header">
-    <h3 class="modal-title" id="modal-title">Add New Schema</h3>
-  </div>
   <form class="form-horizontal">
   <div ng-switch="addsteps[curstep]">
     <div ng-switch-when="step1">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Add New Schema --Basic</h3>
+      </div>
       <div class="modal-body" id="modal-body">
         <div class="container-fluid">
-          <h4>Basic</h4>
           <div class="form-group">
             <label class="control-label col-md-2">Name</label>
             <div class="col-md-10">
@@ -25,14 +24,20 @@
           </div>
           <div class="form-group">
             <label class="control-label col-md-2">Rowkey Expression</label>
-            <div class="col-md-10">
+            <div class="col-md-8">
               <input class="form-control" ng-model="newschema.rowkey_expression">
+            </div>
+            <div class="col-md-2">
+              <a href="">About Expression?</a>
             </div>
           </div>
           <div class="form-group">
             <label class="control-label col-md-2">Table Expresstion</label>
-            <div class="col-md-10">
+            <div class="col-md-8">
               <input class="form-control" ng-model="newschema.table_expression">
+            </div>
+            <div class="col-md-2">
+              <a href="">About Expression?</a>
             </div>
           </div>
           <div class="form-group">
@@ -89,9 +94,11 @@
       </div> <!-- END of modal-footer -->
     </div> <!-- END of switch step1 -->
     <div ng-switch-when="step2">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Add New Schema --Fields</h3>
+      </div>
       <div class="modal-body" id="modal-body">
         <div class="container-fluid">
-          <h4>Define Fields</h4>
           <div class="form-group">
             <label class="control-label col-md-2">Name</label>
             <div class="col-md-10">
@@ -123,7 +130,7 @@
               <div class="checkbox"><label><input type="checkbox" value="" ng-model="new_field.index_stored" disabled>Stored</label></div>
             </div>
             <div class="col-md-4">
-              <select class="form-control" ng-model="new_field.index_type" ng-options="tp for tp in field_index_type" ng-disabled="!(new_field.indexed || new_field.content_field)">
+              <select class="form-control" ng-model="new_field.index_type" ng-options="tp for tp in field_index_type | filter: typeFilter[new_field.store_type]" ng-disabled="!((new_field.indexed || new_field.content_field) && new_field.store_type)">
                 <option value="">(Index type)</option>
               </select>
             </div>
@@ -164,13 +171,15 @@
       </div> <!-- END of modal-footer -->
     </div> <!-- END of switch step2 -->
     <div ng-switch-when="step3">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Add New Schema --Query Fields</h3>
+      </div>
       <div class="modal-body" id="modal-body">
         <div class="container-fluid">
-          <h4>Query Fields</h4>
           <div class="form-group">
             <label class="control-label col-md-2">Name</label>
             <div class="col-md-10">
-              <select class="form-control" ng-model="new_query_field.name" ng-options="field.name as field.name for field in newschema.fields">
+              <select class="form-control" ng-model="new_query_field.name" ng-options="field.name as field.name for field in newschema.fields | filter: queryFilter">
                 <option value="">(Select existed fields to query)</option>
               </select>
             </div>
@@ -206,6 +215,7 @@
       </div> <!-- END of modal-footer -->
     </div> <!-- END of switch step3 -->
   </div> <!-- END of ng-switch -->
+  </form>
 </script>
 <div class="container-fluid">
   <div class="row">

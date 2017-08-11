@@ -46,7 +46,7 @@ angular.module('basic').controller('SchemaCtrl', ['$scope', '$http', 'GLOBAL', '
         ];
         // field store type
         $scope.field_type = [ 
-          "int", "Float", "Double", "Long", "Boolean", "String", "Netsted", "File", "Attachment"
+          "int", "long", "float", "double", "string", "Boolean", "File", "Attachment"
         ];
         // field index type
         $scope.field_index_type = [
@@ -62,7 +62,7 @@ angular.module('basic').controller('SchemaCtrl', ['$scope', '$http', 'GLOBAL', '
         // Temp new inner field
         $scope.new_inner_field = { name: null, separator: null };
         // Temp new field
-        $scope.new_field = { name: null, store_type: null, indexed: true, index_stored: false, index_type: null, content_field: null, inner_field: null };
+        $scope.new_field = { name: null, store_type: null, indexed: true, index_stored: false };
         // Temp new query field
         $scope.new_query_field = { name: null, weight: null };
 
@@ -86,8 +86,11 @@ angular.module('basic').controller('SchemaCtrl', ['$scope', '$http', 'GLOBAL', '
 
         // Functions of Define Field
         $scope.addField = function() {
+          if(!$scope.new_field.index_type) { delete $scope.new_field.index_type; }
+          if(!$scope.new_field.content_field) { delete $scope.new_field.content_field; }
+          if(!$scope.new_field.inner_field) { delete $scope.new_field.inner_field; }
           $scope.newschema.fields.push($scope.new_field);
-          $scope.new_field = { name: null, store_type: null, indexed: true, index_stored: false, index_type: null, content_field: null, inner_field: null };
+          $scope.new_field = { name: null, store_type: null, indexed: true, index_stored: false };
         };
         $scope.removeField = function($index) {
           $scope.newschema.fields.splice($index, 1);
@@ -129,6 +132,7 @@ angular.module('basic').controller('SchemaCtrl', ['$scope', '$http', 'GLOBAL', '
                 text: "Yes",
                 action: function(scope) {
                   scope._ok();
+                  modealInstance.close();
                 }
               },
               No: {
@@ -144,8 +148,20 @@ angular.module('basic').controller('SchemaCtrl', ['$scope', '$http', 'GLOBAL', '
         // Functions of filter
         $scope.typeFilter = {
           content: function(item) { return /^text/.test(item); },
-          int: function(item) {}
+          int: function(item) { return /int/.test(item); },
+          float: function(item) { return /float/.test(item); },
+          double: function(item) { return /double/.test(item); },
+          long: function(item) { return /long/.test(item); },
+          string: function(item) { return /(string|date|text|lowercase)/.test(item); },
+          Boolean: function() { return false; },
+          File: function() { return false; },
+          Attachment: function() { return false; }
         };
+        
+        $scope.queryFilter = function(item) {
+          return item.index_type;
+        };
+
       }] // END of controller
     }); // END of modal instance
   };
@@ -154,8 +170,6 @@ angular.module('basic').controller('SchemaCtrl', ['$scope', '$http', 'GLOBAL', '
   $http.get(GLOBAL.host + "/schema/list").then(function(data) {
     $scope.schemas = data.data.schemas;
     if($scope.schemas.length > 0) {
-      $scope.page.schema = $scope.schemas[0];
-      $scope.page.schema = $scope.schemas[0];
       $scope.page.schema = $scope.schemas[0];
       $scope.page.schemasActive.push(true);
       for (let i = 1; i < $scope.schemas.length; i++) {
